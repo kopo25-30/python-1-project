@@ -1,0 +1,22 @@
+star = '*'
+blank = ' '
+
+n = int(input())
+totalstar = 0
+
+if n >= 1:
+    for i in range(1, n+1):
+        starcount = i * 2 - 1 # 1부터 2개씩 증가
+        if n == 4:
+          print('멈춤')
+          break
+        elif totalstar + starcount > 8: # 8개를 넘기면 필요한 개수만 출력하고 종료
+            remain = 8 - totalstar # total star의 누적개수가 쌓일 때 마다 8과 뺄셈을 하고 나머지 별의 개수를 셈
+            print(blank * (n - i) + star * remain) # 빈칸 수와 나머지 별을 표시함
+            break
+        else:
+            print(blank * (n - i) + star * starcount) #8개가 넘지 않는다면 기존의 별을 추가해서 출력
+            totalstar += starcount #별의 누적개수를 계산
+else:
+     print('양수값을 입력해주세요') # 양수값이 아닌 값이 들어오면 이 문장이 출력됨
+
