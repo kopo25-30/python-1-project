@@ -1,8 +1,17 @@
 print('음료목록 1.오렌지주스(100원), 2.커피(200원) 3.콜라(300원)')
-coin = int(input('동전을 넣으세요.'))
-drink = int(input('음료를 고르세요.\n'))
+
 
 while True:
+
+    coin = int(input('동전을 넣으세요.'))
+
+    if coin < 100: # if문을 사용하여 최소금액 아래로 내려가게 되면 돈을 더 넣으라는 문구와 함께 종료
+          print('돈을 더 넣으세요')
+          continue # 돈을 더 넣으라는 문구와 함께 다시 반복문을 진행
+
+    drink = int(input('음료를 고르세요.\n'))
+
+
     if drink == 1:#오렌지주스의 음료목록
         if coin >= 100: #100이상일 때 아래가 출력
             remain = coin - 100 # 잔돈 계산
@@ -10,8 +19,8 @@ while True:
             print('거스름돈은 {}원 입니다.'.format(remain)) # format을 이용하여 중괄호 채워기
             break # break를 사용하여 무한반복 멈춤
         else:
-            print('잔액이 부족합니다.')      
-            break # break를 사용하여 무한반복 멈춤
+            print('잔액이 부족합니다.')
+
 
     elif drink == 2: #커피의 음료목록
         if coin >= 200: # 200이상이면 아래가 출력
@@ -21,7 +30,7 @@ while True:
             break # break를 사용하여 무한반복 멈춤
         else:
             print('잔액이 부족합니다')
-            break # break를 사용하여 무한반복 멈춤
+            break
 
     elif drink == 3: # 콜라의 음료목록
         if coin >= 300: # 300이상이면 아래가 출력
@@ -31,8 +40,10 @@ while True:
             break # break를 사용하여 무한반복 멈춤
         else:
             print('잔액이 부족합니다')
-            break # break를 사용하여 무한반복 멈춤
+            break
 
     else: # 없는 번호 입력 시 아래 문구 출력
         print('없는 메뉴입니다. 다시 입력해 주세요.')
-        break # break를 사용하여 무한반복 멈춤
+        break
+
+
