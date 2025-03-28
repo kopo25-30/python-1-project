@@ -1,0 +1,10 @@
+m = int(input())  # 세로 줄 수 (행)
+n = int(input())  # 가로 칸 수 (열)
+
+if m >= 1 and n >= 1:
+    for i in range(1, m + 1):  # 행
+        for j in range(n):     # 열
+            print(i + j, end=' ') # 총 몇개의 개수의 숫자가 출력되는지 알 수 있음
+        print() # 줄 바꿈 // 위에 있는 for문이 진행되고 줄 바꿈이 된다
+else:
+    print("정수값을 입력바랍니다")
