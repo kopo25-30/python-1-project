@@ -7,7 +7,7 @@ tuple_2 = (100,200,300) # 튜플로 가격을 설정list를 튜플로
 
 while True:
 
-    coin = int(input('동전을 넣으세요.'))
+    coin = float(input('동전을 넣으세요.'))
 
     if coin < 100: # if문을 사용하여 최소금액 아래로 내려가게 되면 돈을 더 넣으라는 문구와 함께 종료
           print('돈을 더 넣으세요')
