@@ -1,0 +1,17 @@
+import csv
+
+f= open ('weater.csv','w',newline='')
+wr = csv.writer(f)
+
+
+import csv
+
+f= open ('weater.csv','w',newline='') # weater.scv라는 이름의 파일을 쓰기모드로 열기
+wr = csv.writer(f) # csv.writer 객체를 생성해 wr에 저장
+
+wr.writerow(['날짜','요일','날씨','최저기온','최고기온','강수량'])#첫번쨰 줄 헤더 작성
+wr.writerow(['20230101', '월', '맑음', -4.3,3.8,0]) #각각의 행에 날씨 정보 추가
+wr.writerow(['20230102', '화', '맑음', -7.4,0.4,0])
+wr.writerow(['20230103', '수', '맑음', -9.0,0.6,0])
+
+f.close()
