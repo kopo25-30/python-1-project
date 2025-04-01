@@ -4,5 +4,7 @@ def interest_year(p, r, n):
 p = 30000000  #거치 금액
 r = 0.051     #연간 이율
 n = 3         #거치 연수
+
 result = interest_year(p, r, n)
+
 print('원금: {0}, 이자: {1}'.format(p, result - p))
