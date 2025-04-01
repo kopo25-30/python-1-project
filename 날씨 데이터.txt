@@ -1,12 +1,11 @@
 import csv
 
-f= open ('weater.csv','w',newline='')
+f= open ('weater.csv', 'w', newline='')
 wr = csv.writer(f)
-
 
 import csv
 
-f= open ('weater.csv','w',newline='') # weater.scv라는 이름의 파일을 쓰기모드로 열기
+f= open ('weater.csv', 'w', newline='') # weater.scv라는 이름의 파일을 쓰기모드로 열기
 wr = csv.writer(f) # csv.writer 객체를 생성해 wr에 저장
 
 wr.writerow(['날짜','요일','날씨','최저기온','최고기온','강수량'])#첫번쨰 줄 헤더 작성
