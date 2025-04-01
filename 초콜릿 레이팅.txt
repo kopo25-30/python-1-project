@@ -1,6 +1,6 @@
 import numpy as np
 
-data = np.loadtxt('chocolate_rating.csv', delimiter=',')
+data = np.loadtxt('chocolate_rating.csv', delimiter = ',')
 print('차원:', data.ndim)
 print('모양:', data.shape)
 print('원소 수:', data.size)
@@ -22,7 +22,7 @@ print(high_id)
 high_kakao = high_level[:, 2]
 
 # 카카오 함유량별 빈도수 계산
-unique_values, value_counts = np.unique(high_kakao, return_counts=True)
+unique_values, value_counts = np.unique(high_kakao, return_counts = True)
 print('카카오 함유량:', unique_values)
 print('함유량별 빈도수:', value_counts)
 
