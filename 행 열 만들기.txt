@@ -7,4 +7,4 @@ if m >= 1 and n >= 1 and (m % 1 == 0) and (n % 1 == 0):
             print(i + j, end=' ')   
         print() 
 else:
-    print("정수값을 입력바랍니다")
+    print("자연수를 입력바랍니다")
