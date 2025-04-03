@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main()
+{
+    int a = 5;
+    int b = 3;
+    int c = 2;
+    
+    if (c == 0){
+        printf("0으로 나눌 수 없습니다");
+    } else { 
+        int result = (a + b) * c - (a - b) / c;
+        printf("%d", result); 
+    }
+}
