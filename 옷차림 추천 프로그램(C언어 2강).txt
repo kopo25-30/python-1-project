@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+void main() {
+    
+    float a;
+    char weather;
+    printf("오늘의 온도 : "), scanf("%f", &a);
+
+    if (a >= 30){
+        weather = 'A';
+    } else if (a >= 25 && a < 30){
+        weather = 'B';
+    } else if (a >= 15 && a < 25){
+        weather = 'C';
+    } else if (a >= 5 && a < 15){
+        weather = 'D';
+    } else if (a >= 0 && a < 5){
+        weather = 'E';
+    } else {
+        weather = 'F';
+    }
+    
+    switch(weather){
+        case 'A':
+            printf("너무 더워요! 반팔과 반바지를 입으세요.");
+            break;
+        case 'B':
+            printf("따뜻한 날씨입니다! 가벼운 옷을 입으세요.");
+            break;
+        case 'C':
+            printf("신선한 날씨입니다! 가벼운 겉옷을 챙기세요.");
+            break;
+        case 'D':
+            printf("조금 쌀쌀합니다! 따뜻한 옷을 입으세요.");
+            break;
+        case 'E':
+            printf("매우 춥습니다! 두꺼운 외투를 꼭 입으세요.");
+            break;
+        default:
+            printf("한파 경고! 패딩과 장갑, 모자를 착용하세요.");
+    }
+}

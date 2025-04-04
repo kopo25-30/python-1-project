@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main()
+{
+    int num;
+    int result;
+    
+    scanf("%d", &num);
+    
+    if (num == 0) {
+        printf("특별한 수가 아닙니다.");
+        return 0;        
+    }
+    
+    
+    if (num < 0 || num > 999) {
+        printf("0 부터 999까지만 해주세요");
+        return 0;
+    } 
+    //원본 값을 저장, 저장하지 않고 변수를 넣을 시 두자리 수이면 나누기를 한 뒤 
+    //저장 되기 때문에 초기값으로 원본 값을 저장해야함.
+    int origin = num; 
+    
+    int b1 = num % 10;
+    num /= 10;
+    int b2 = num % 10;
+    num /= 10;
+    int b3 = num % 10;
+    
+    result = b3 + b2 + b1;
+    
+    if (num % 2 != 0 && origin % 3 == 0) {
+        printf("특별한 수 입니다.");
+    } else if (result % 7 == 0) {
+        printf("특별한 수 입니다.");
+    } else if ((b3 != 0 && b1 < b3) || (b3 == 0 && b1 < b2)) {
+    printf("특별한 수 입니다.");
+    } else {
+        printf("특별한 수가 아닙니다.");
+    }
+    
+    return 0;
+}
+
