@@ -10,7 +10,7 @@ int main()
     scanf ("%f", &b);
     scanf ("%f", &c);
     
-    if (c == 0){
+    if (c == 0) {
         printf("0으로 나눌 수 없습니다");
     } else { 
         float result = (a + b) * c - (a - b) / c;
