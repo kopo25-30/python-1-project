@@ -1,0 +1,27 @@
+#include <string.h>
+#include <stdio.h>
+
+void main() 
+{
+    int M;
+    int N;
+    
+    printf("처음 수를 입력해주세요 : ");
+    scanf("%d", &M);
+    printf("마지막 수를 입력해주세요 : ");
+    scanf("%d", &N);
+    
+    for (int i = M; i <= N; i++) {
+        char str[10];
+        sprintf(str, "%d", i);
+        
+        if (i % 7 == 0 || strchr(str, '7') != NULL) {
+            continue;
+        } else if (i % 5 == 0) {
+            printf("%d ", i);
+            break;
+        } else {
+            printf("%d ", i);
+        }   
+    } 
+}
