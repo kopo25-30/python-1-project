@@ -11,12 +11,12 @@ void main() {
     if (i <= 0) {
         printf("0보다 큰 수를 입력해주세요.");
     } else { 
-    while (j < i + 1) {
-        if (j == 6) {
+        while (j < i + 1) {
+            if (j == 6) {
             break;
-        }
+            }
         printf("%d ", j);
         j++;
-    }
+        }
     }
 }
