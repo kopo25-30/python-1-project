@@ -14,7 +14,6 @@ void main() {
             if (j == 6) {
                 break;
             }
-
             printf("%d ", j);
             j++;
         }
