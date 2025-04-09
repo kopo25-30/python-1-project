@@ -14,8 +14,8 @@ void main() {
             if (i == 2025 && j == 5) {
                 break;
             }
-                printf("%d", i);
-                printf("%02d\n", j);
+            printf("%d", i);
+            printf("%02d\n", j);
        }
    }
 }
