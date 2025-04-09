@@ -18,11 +18,11 @@ void quick_sort(int arr[], int left, int right) {
         while (j >= left + 1 && arr[j] >= pivot) {
             j--; // 피벗보다 작은 값 찾기
         }
-            if (i < j) {            // i와 j가 엇갈리기 전이면 값 교환
+        if (i < j) {            // i와 j가 엇갈리기 전이면 값 교환
                 temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
-            }
+        }
     }
 
     // 피벗과 j 위치의 값을 교환
