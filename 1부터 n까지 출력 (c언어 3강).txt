@@ -1,22 +1,22 @@
 #include <stdio.h>
 
 void main() {
-    
     int i;
     int j = 1;
-    
-    printf("숫자를 입력하세요. : "); 
+
+    printf("숫자를 입력하세요. : ");
     scanf("%d", &i);
-    
+
     if (i <= 0) {
         printf("0보다 큰 수를 입력해주세요.");
-    } else { 
+    } else {
         while (j < i + 1) {
             if (j == 6) {
-            break;
+                break;
             }
-        printf("%d ", j);
-        j++;
+
+            printf("%d ", j);
+            j++;
         }
     }
 }
