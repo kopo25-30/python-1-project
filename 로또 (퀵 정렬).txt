@@ -12,14 +12,17 @@ void quick_sort(int arr[], int left, int right) {
     int temp;
 
     while (i <= j) {            // 인덱스가 서로 겹치지 않을 때까지 반복
-        while (i <= right && arr[i] <= pivot) i++;    // 피벗보다 큰 값 찾기
-        while (j >= left + 1 && arr[j] >= pivot) j--; // 피벗보다 작은 값 찾기
-
-        if (i < j) {            // i와 j가 엇갈리기 전이면 값 교환
-            temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+        while (i <= right && arr[i] <= pivot) {
+            i++;
+        } // 피벗보다 큰 값 찾기
+        while (j >= left + 1 && arr[j] >= pivot) {
+            j--; // 피벗보다 작은 값 찾기
         }
+            if (i < j) {            // i와 j가 엇갈리기 전이면 값 교환
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
     }
 
     // 피벗과 j 위치의 값을 교환
@@ -61,4 +64,3 @@ int main() {
 
     return 0;                   // 프로그램 종료
 }
-
