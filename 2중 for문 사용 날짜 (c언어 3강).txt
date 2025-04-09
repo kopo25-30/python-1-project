@@ -10,12 +10,13 @@ void main() {
            
            if (i == 2023 && j <= 5 && j >= 2) {
            continue;
-           }
-           if (i == 2025 && j == 5) {
-           break;
-           }
-           printf("%d", i);
-           printf("%02d\n", j);
+            }
+                if (i == 2025 && j == 5) {
+                break;
+                }
+                
+                printf("%d", i);
+                printf("%02d\n", j);
        }
    }
 }
