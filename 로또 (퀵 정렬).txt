@@ -1,59 +1,64 @@
-#include <stdio.h>
+#include <stdio.h>    
 #include <stdlib.h>
-#include <time.h>
-#include <unistd.h>
+#include <time.h>     
+#include <unistd.h> 
 
-void quick(int arr[], int left, int right) {
-    if (left >= right) return;
+void quick_sort(int arr[], int left, int right) {
+    if (left >= right) return;  // 정렬할 구간이 1개 이하일 경우 종료
 
-    int pivot = arr[left];
-    int i = left + 1;
-    int j = right;
+    int pivot = arr[left];      // 피벗은 가장 왼쪽 값으로 설정
+    int i = left + 1;           // 왼쪽 피벗 다음 인덱스부터 시작
+    int j = right;              // 오른쪽 끝부터 시작
     int temp;
 
-    while (i <= j) {
-        while (i <= right && arr[i] <= pivot) i++;
-        while (j >= left + 1 && arr[j] >= pivot) j--;
-        if (i < j) {
+    while (i <= j) {            // 인덱스가 서로 겹치지 않을 때까지 반복
+        while (i <= right && arr[i] <= pivot) i++;    // 피벗보다 큰 값 찾기
+        while (j >= left + 1 && arr[j] >= pivot) j--; // 피벗보다 작은 값 찾기
+
+        if (i < j) {            // i와 j가 엇갈리기 전이면 값 교환
             temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
         }
     }
 
-    // 피벗과 j 위치 교환
+    // 피벗과 j 위치의 값을 교환
     temp = arr[left];
     arr[left] = arr[j];
     arr[j] = temp;
 
-    quick(arr, left, j - 1);
-    quick(arr, j + 1, right);
+    // 분할된 두 구간에 대해 재귀 호출
+    quick_sort(arr, left, j - 1);
+    quick_sort(arr, j + 1, right);
 }
 
 int main() {
-    int num[6];
-    srand(time(NULL));
+    int num[6];                 // 로또 번호를 저장할 배열
+    int temp;                   // 임시 변수 (정렬에 사용되지 않음, 삭제 가능)
 
+    srand(time(NULL));          // 현재 시간을 시드로 설정해 랜덤 값 초기화
+
+    // 중복 없이 1~45 사이의 숫자 6개 생성
     for (int i = 0; i < 6; i++) {
-        num[i] = (rand() % 45) + 1;
+        num[i] = (rand() % 45) + 1;  // 1~45 사이 난수 생성
 
-        // 중복 체크
         for (int k = 0; k < i; k++) {
-            if (num[i] == num[k]) {
-                i--;
+            if (num[i] == num[k]) { // 중복 체크
+                i--;                // 중복이면 i를 되돌려 다시 시도
                 break;
             }
         }
     }
 
-    // 퀵 정렬 호출
-    quick(num, 0, 5);
+    // 퀵 정렬을 통해 오름차순 정렬
+    quick_sort(num, 0, 5);      // 배열 인덱스 0~5 정렬
 
-    // 결과 출력
+    // 정렬된 번호 출력 (1초 간격)
     for (int i = 0; i < 6; i++) {
-        printf("%d\n", num[i]);
-        sleep(1); // 1초 간격 출력
+        printf("%d\n", num[i]); // 번호 출력
+        sleep(1);               // 1초 대기 (효과 연출)
     }
 
-    return 0;
+    return 0;                   // 프로그램 종료
 }
+
