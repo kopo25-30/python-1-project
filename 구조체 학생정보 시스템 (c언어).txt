@@ -1,0 +1,41 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#define TRUE 1
+#define FALSE 0
+
+void main()
+{
+    struct student {
+        char *name;
+        int age;
+        char *gender;
+        char *hobby;
+    };
+    
+    struct student a[3] = {
+        {"hong", 30, "M", "soccer"},
+        {"kim", 25, "M", "music"},
+        {"park", 20, "F", "movie"}
+    };
+    
+    for (int i = 0; i < 3; i++) {
+        printf("%s/%d/%s/%s\n", a[i].name, a[i].age, a[i].gender, a[i].hobby);
+        printf("\n");
+    }
+    
+    struct student students[1000];
+    for (int j = 0; j < 1000; j++) {
+        students[j].name = (char*)malloc(sizeof(char) * 40);
+        students[j].gender = (char*)malloc(sizeof(char) * 40);
+        students[j].hobby = (char*)malloc(sizeof(char) * 100);
+        scanf("\n%s %d %s %s", students[j].name, &students[j].age, students[j].gender, students[j].hobby);
+            for (int i = 0; i < 3; i++) {
+                printf("%s/%d/%s/%s\n", a[i].name, a[i].age, a[i].gender, a[i].hobby);
+            }
+                for (int k = 0; k < j; k++) {
+                    printf("\n%s/%d/%s/%s\n", students[k].name, students[k].age, students[k].gender, students[k].hobby);
+                }
+                printf("%s/%d/%s/%s", students[j].name, students[j].age, students[j].gender, students[j].hobby);    
+    }
+    
+}
