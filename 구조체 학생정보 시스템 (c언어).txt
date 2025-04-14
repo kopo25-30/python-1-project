@@ -24,15 +24,15 @@ struct student a[3] = {
 
 // 예외처리
 int is_valid(struct student s) { //is_valid를 사용하여 함수를 다시 받음.
-    if (s.age <= 0 || s.age > 100) {
-        printf("나이를 다시 입력해주세요.\n");
-        return 0;
-    }
-    if (strcmp(s.gender, "M") != 0 && strcmp(s.gender, "F") != 0) {
-        printf("성별은 M 또는 F만 입력할 수 있습니다.\n");
-        return 0;
-    }
-    return 1;
+        if (s.age <= 0 || s.age > 100) {
+            printf("나이를 다시 입력해주세요.\n");
+            return 0;
+        }
+        if (strcmp(s.gender, "M") != 0 && strcmp(s.gender, "F") != 0) {
+            printf("성별은 M 또는 F만 입력할 수 있습니다.\n");
+            return 0;
+        }
+            return 1;
 }
 
 // 학생 출력 함수
@@ -48,6 +48,7 @@ void input_student(struct student s_array[], int index) {
     s_array[index].hobby = (char*)malloc(100);
 
     while (TRUE) {
+        printf("\n이름 나이 성별 취미 순으로 입력해주세요.\n");
         scanf("%s %d %s %s",
               s_array[index].name,
               &s_array[index].age,
@@ -58,6 +59,22 @@ void input_student(struct student s_array[], int index) {
             break;
         }
     }
+}
+
+void print_student_data(struct student students[], int* total) {
+     for (int j = 0; j < MAX; j++) {
+        input_student(students, j);    
+        *total = j + 1;
+        print_students(a, 3);          // 기본 학생 출력
+        print_students(students, *total); // 입력된 학생들 출력
+    }
+}
+
+void main() {
+    struct student students[MAX];  // 입력 받을 학생 배열
+    int total = 0;                 // 누적 입력 수
+    print_students(a, 3);          // 초기 학생 3명 출력
+    print_student_data(students, &total);
 }
 
 void print_student_data(struct student students[], int* total) {
