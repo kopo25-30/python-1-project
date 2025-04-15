@@ -76,7 +76,6 @@ void input_student(struct student *s) {
 
     printf("취미를 입력하세요 (없으면 엔터): ");
     fgets(temp_hobby, sizeof(temp_hobby), stdin);
-    temp_hobby[strcspn(temp_hobby, "\n")] = '\0';
 
     if (strlen(temp_hobby) > 0) {
         s->u.hobby = (char*)malloc(strlen(temp_hobby) + 1);
@@ -84,7 +83,6 @@ void input_student(struct student *s) {
     } else {
         printf("기타 정보를 입력하세요 (없으면 엔터): ");
         fgets(temp_etc, sizeof(temp_etc), stdin);
-        temp_etc[strcspn(temp_etc, "\n")] = '\0';
 
         s->u.etc = (char*)malloc(strlen(temp_etc) + 1);
         strcpy(s->u.etc, temp_etc);
