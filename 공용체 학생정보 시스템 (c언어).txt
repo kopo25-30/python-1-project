@@ -1,0 +1,124 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX 1000
+
+// 구조체와 공용체 정의
+struct student {
+    char *name;
+    int age;
+    char *gender;
+    union {
+        char *hobby;
+        char *etc;
+    } u;
+};
+
+// 초기 학생 3명 (정적 할당된 문자열 사용)
+struct student a[3] = {
+    {"hong", 30, "M", {.hobby = "soccer"}},
+    {"kim", 25, "M", {.hobby = "music"}},
+    {"park", 20, "F", {.hobby = "movie"}}
+};
+
+// 유효성 검사
+int is_valid(struct student s) {
+    if (s.age <= 0 || s.age > 100) {
+        printf("나이를 다시 입력해주세요.\n");
+        return 0;
+    }
+    if (strcmp(s.gender, "M") != 0 && strcmp(s.gender, "F") != 0) {
+        printf("성별은 M 또는 F만 입력할 수 있습니다.\n");
+        return 0;
+    }
+    return 1;
+}
+
+// 학생 정보 출력
+void print_students(struct student arr[], int count) {
+    for (int i = 0; i < count; i++) {
+        char *info = "";
+        if (arr[i].u.hobby != NULL && strlen(arr[i].u.hobby) > 0) {
+            info = arr[i].u.hobby;
+        } else if (arr[i].u.etc != NULL && strlen(arr[i].u.etc) > 0) {
+            info = arr[i].u.etc;
+        }
+        printf("%s/%d/%s/%s\n", arr[i].name, arr[i].age, arr[i].gender, info);
+    }
+}
+
+// 사용자 입력 함수
+void input_student(struct student *s) {
+    char temp_name[100], temp_gender[10];
+    char temp_hobby[100], temp_etc[100];
+
+    while (1) {
+        printf("\n이름, 나이, 성별(M/F)을 입력하세요: \n");
+        scanf("%s %d %s", temp_name, &s->age, temp_gender);
+        getchar(); // 엔터 제거
+
+        struct student temp;
+        temp.name = temp_name;
+        temp.age = s->age;
+        temp.gender = temp_gender;
+
+        if (is_valid(temp)) break;
+    }
+
+    // 메모리 할당 및 값 저장
+    s->name = (char*)malloc(strlen(temp_name) + 1);
+    strcpy(s->name, temp_name);
+
+    s->gender = (char*)malloc(strlen(temp_gender) + 1);
+    strcpy(s->gender, temp_gender);
+
+    printf("취미를 입력하세요 (없으면 엔터): ");
+    fgets(temp_hobby, sizeof(temp_hobby), stdin);
+    temp_hobby[strcspn(temp_hobby, "\n")] = '\0';
+
+    if (strlen(temp_hobby) > 0) {
+        s->u.hobby = (char*)malloc(strlen(temp_hobby) + 1);
+        strcpy(s->u.hobby, temp_hobby);
+    } else {
+        printf("기타 정보를 입력하세요 (없으면 엔터): ");
+        fgets(temp_etc, sizeof(temp_etc), stdin);
+        temp_etc[strcspn(temp_etc, "\n")] = '\0';
+
+        s->u.etc = (char*)malloc(strlen(temp_etc) + 1);
+        strcpy(s->u.etc, temp_etc);
+    }
+}
+
+void free_student(struct student *s) {
+    free(s->name);
+    free(s->gender);
+    if (s->u.hobby != NULL) {
+        free(s->u.hobby);
+    } else if (s->u.etc != NULL) {
+        free(s->u.etc);
+    }
+}
+
+// 메인 함수
+int main() {
+    struct student students[MAX];
+    int count = 0;
+
+    print_students(a, 3);
+
+    while (1) {
+        input_student(&students[count]);
+        count++;
+    }
+
+    print_students(a, 3);              // 기본 학생 출력
+    print_students(students, count);   // 입력된 학생 출력
+
+    for (int i = 0; i < count; i++) {
+        free_student(&students[i]);    // 메모리 해제
+    }
+
+    return 0;
+}
