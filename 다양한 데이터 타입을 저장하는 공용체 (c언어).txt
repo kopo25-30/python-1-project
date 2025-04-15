@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main()
+{
+    union student {
+        int intVal;
+        float floatVal;
+        char charVal;
+    };
+    
+    union student u;
+    u.intVal = 100;
+    u.floatVal = 90.2;
+    u.charVal = 'A';
+    printf("%d %d\n", u.intVal, &u.intVal);
+    printf("%f %d\n", u.floatVal, &u.floatVal);
+    printf("%c %d\n", u.charVal, &u.charVal);
+}
