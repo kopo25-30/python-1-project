@@ -1,14 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void main()
-{
+void processFibonacci() {
     int f1 = 0;
     int f2 = 1;
     int f3;
     int n;
     int even = 0;
     int odd = 0;
-    int sum;
+    int pibo;
     
     printf("숫자를 입력하세요 : ");
     scanf("%d", &n);
@@ -23,15 +24,20 @@ void main()
             printf("%d ", f3);
             f1 = f2;
             f2 = f3;
-                if (f3 % 2 == 0) {
-                    even++;
-                } else {
-                    odd++;
-                }
+            if (f3 % 2 == 0) {
+                even++;
+            } else {
+                odd++;
+            }
         }
     }
-    int pibo = f1 + f2 + f3;
+    pibo = f1 + f2 + f3;
     printf("\n합 : %d", pibo - 1);
     
-    printf("\n홀/짝 : %d/%d", odd,even);
+    printf("\n홀/짝 : %d/%d", odd, even);
+}
+
+int main(void) {
+    processFibonacci();
+    return 0;
 }
