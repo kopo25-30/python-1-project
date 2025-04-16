@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main()
+{
+    enum car {CAR, SEDAN, SUV, TRUCK, VAN};
+
+    enum car c;
+    
+    printf("차량을 입력하세요 : ");
+    scanf("%d", &c);
+
+    switch (c) {
+        case CAR:
+            printf("1부터 입력해주세요.");
+                break;
+        case SEDAN:
+            printf("SEDAN");
+                break;
+        case SUV:
+            printf("SUV");
+                break;
+        case TRUCK:
+            printf("TRUCK");
+                break; 
+        case VAN:
+            printf("VAN");
+                break;                
+        default:
+            printf("잘못입력하였습니다.");
+    }
+}
