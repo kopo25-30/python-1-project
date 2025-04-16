@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+void main()
+{
+    int f1 = 0;
+    int f2 = 1;
+    int f3;
+    int n;
+    int even = 0;
+    int odd = 0;
+    int sum;
+    
+    printf("숫자를 입력하세요 : ");
+    scanf("%d", &n);
+    
+    for (int i = 0; i < n; i++) {
+        if (i == 1) {
+            printf("%d ", f2);
+            odd++;
+        }
+        else {
+            f3 = f1 + f2;
+            printf("%d ", f3);
+            f1 = f2;
+            f2 = f3;
+                if (f3 % 2 == 0) {
+                    even++;
+                } else {
+                    odd++;
+                }
+        }
+    }
+    int pibo = f1 + f2 + f3;
+    printf("\n합 : %d", pibo - 1);
+    
+    printf("\n홀/짝 : %d/%d", odd,even);
+}
