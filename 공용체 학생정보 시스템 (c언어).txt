@@ -38,8 +38,9 @@ int is_valid(struct student s) {
 
 void remove_newline(char *str) {
     size_t len = strlen(str);
-    if (len > 0 && str[len - 1] == '\n')
+    if (len > 0 && str[len - 1] == '\n') {
         str[len - 1] = '\0';
+    }
 }
 
 char *get_input(const char *prompt) {
@@ -112,10 +113,11 @@ void input_student(struct student *s) {
 void print_students(struct student arr[], int count) {
     for (int i = 0; i < count; i++) {
         printf("%s/%d/%s/", arr[i].name, arr[i].age, arr[i].gender);
-        if (arr[i].has_hobby)
-            printf("%s\n", arr[i].u.hobby);
-        else
-            printf("%s\n", arr[i].u.etc);
+            if (arr[i].has_hobby) {
+                printf("%s\n", arr[i].u.hobby);
+            } else {
+                printf("%s\n", arr[i].u.etc);
+            }    
     }
 }
 
