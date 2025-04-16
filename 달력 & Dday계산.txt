@@ -19,10 +19,7 @@ int DdayDate(int year, int month, int d)
     int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int i;
     
-    int totalDays = ((year - 1) * 365 
-                    + (year - 1) / 4 
-                    - (year - 1) / 100 
-                    + (year - 1) / 400); 
+    int totalDays = ((year - 1) * 365 + (year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400); 
 
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
         daysInMonth[2] = 29; 
@@ -48,10 +45,7 @@ void printCalendar(int year, int month)
     }    
     printf("\n");
 
-    int basestartingday = (year * 365 
-                           + (year - 1) / 4 
-                           - (year - 1) / 100 
-                           + (year - 1) / 400) % 7;
+    int basestartingday = (year * 365 + (year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400) % 7;
     int totaldays = 0;
     
     for (int k = 1; k < month; k++) {
@@ -101,18 +95,14 @@ void calculateDday(void)
     printf("D-day: %d일 남았습니다\n", diffDays);
 }
 
-int main()
+void main()
 {
     int year, month;
-    
     printf("year를 입력하세요 : ");
     scanf("%d", &year);
-    printf("month를 입력하세요요: ");
+    printf("month를 입력하세요: ");
     scanf("%d", &month);
-    
     printCalendar(year, month);
-    
     calculateDday();
-    
-    return 0;
 }
+
