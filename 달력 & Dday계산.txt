@@ -4,6 +4,9 @@
 enum month { jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec };
 enum day { sun, mon, tue, wed, thu, fri, sat };
 
+enum month m;
+enum day d;
+
 int getDaysInMonth(int year, int month) 
 {
     int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -36,9 +39,11 @@ int DdayDate(int year, int month, int d)
 void printCalendar(int year, int month)
 {
     char days[][10] = {"S", "M", "T", "W", "T", "F", "S"};
-    int d;
+    char *months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    
+    m = (enum month)(month - 1);
 
-    printf("\n%d년 %d월\n", year, month);
+    printf("\n%d년 %s\n", year, months[m]);
 
     for (d = sun; d <= sat; d++) {
         printf("%2s ", days[d]);
@@ -105,4 +110,3 @@ void main()
     printCalendar(year, month);
     calculateDday();
 }
-
